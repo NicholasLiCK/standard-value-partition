@@ -152,16 +152,18 @@ bool ycmp(struct dut& a, struct dut& b)
     return a.max_y < b.max_y;
 }
 
-//x: xarr y: yarr
-void generate_arr(struct dut *x, struct dut *y)
+//use double linked list to insert, then output the arrays needed
+void generate_arr(struct dut *x, struct dut *y)//x: xarr y: yarr
 {
     for (auto i : dutmap)
     {
-        cout << "first is " << i.first << " second is " << i.second << endl;
-        break;
-        //init xarr
-        
-        //init yarr
+        //dl list init
+        struct dd
+        {
+            struct dut;
+            struct dd *pre, *next;
+        };
+
 
 
 
