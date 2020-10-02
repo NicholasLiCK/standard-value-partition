@@ -155,20 +155,25 @@ bool ycmp(struct dut& a, struct dut& b)
 //use double linked list to insert, then output the arrays needed
 void generate_arr(struct dut *x, struct dut *y)//x: xarr y: yarr
 {
+     //dl list init
+    struct dd
+    {
+      struct dut;
+      struct dd *pre, *next;
+    };
+    dd sortHead =
+    {
+      { 0, 0.0, 0.0, 0.0, 0.0,}, &sortHead,
+        &sortHead;
+    }
     for (auto i : dutmap)
     {
-        //dl list init
-        struct dd
-        {
-            struct dut;
-            struct dd *pre, *next;
-        };
-
-
-
-
-        //cmp&place
-
+      struct dut temp = i->second;
+      
+      for (auto j : sortedHead)
+      {
+        
+      }
     }
     
 }
