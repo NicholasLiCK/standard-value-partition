@@ -155,25 +155,10 @@ bool ycmp(struct dut& a, struct dut& b)
 //use double linked list to insert, then output the arrays needed
 void generate_arr(struct dut *x, struct dut *y)//x: xarr y: yarr
 {
-     //dl list init
-    struct dd
+    //work first, put it all into list then sort them
+    for (auto i = dutmap.begin(); i != dutmap.end(); ++i)
     {
-      struct dut;
-      struct dd *pre, *next;
-    };
-    dd sortHead =
-    {
-      { 0, 0.0, 0.0, 0.0, 0.0,}, &sortHead,
-        &sortHead;
-    }
-    for (auto i : dutmap)
-    {
-      struct dut temp = i->second;
-      
-      for (auto j : sortedHead)
-      {
-        
-      }
+        for (int j = 0; j< x.length(); j++)
     }
     
 }
