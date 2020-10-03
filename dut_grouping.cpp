@@ -32,7 +32,8 @@ unordered_map<int, dut> dutmap;//value map organized by dut
 
 void readfile();
 void dut_grouping( );
-void generate_arr(struct dut *x, struct dut *y);
+void generate_arr(int size, struct dut x[], struct dut y[]);
+void arrSorting(int size, struct dut array[], int index);
 
 int main()
 {
@@ -41,14 +42,18 @@ int main()
     readfile();
     dut_grouping();
 
+    cout << dutmap[0].max_x <<endl;
+
     int dut_size = dutmap.size();
     //dynamically to fit different probe card value
-    struct dut * xarr = new struct dut [dut_size];
-    struct dut * yarr = new struct dut [dut_size];
+    struct dut  *xarr = new struct dut [dut_size];
+    struct dut  *yarr = new struct dut [dut_size];
     
-    generate_arr(xarr, yarr);
+    generate_arr(dut_size, xarr, yarr);
+    arrSorting(dut_size, xarr, 1);
+    arrSorting(dut_size, yarr, 2);
 
-    delete [] xarr;
+    delete [] xarr; 
     delete [] yarr;
     
 }
@@ -152,13 +157,34 @@ bool ycmp(struct dut& a, struct dut& b)
     return a.max_y < b.max_y;
 }
 
-//use double linked list to insert, then output the arrays needed
-void generate_arr(struct dut *x, struct dut *y)//x: xarr y: yarr
+
+void generate_arr(int size, struct dut x[], struct dut y[])//x: xarr y: yarr
 {
+    
     //work first, put it all into list then sort them
     for (auto i = dutmap.begin(); i != dutmap.end(); ++i)
     {
-        for (int j = 0; j< x.length(); j++)
+        struct dut temp = i->second;
+        
+        for (int j = 0; j< size; j++)
+        {
+            x[j] = y[j] = temp;
+        }
     }
     
+}
+
+void arrSorting(int size, struct dut array[], int index)
+{
+    int i, j, min;
+    struct dut temp;
+    for (i = 0; i < size - 1; i++) {
+      min = i;
+      for (j = i + 1; j < size; j++)
+      if (array[j].max_x < array[min].max_x)
+      min = j;
+      temp = array[i];
+      array[i] = array[min];
+      array[min] = temp;
+   }
 }
