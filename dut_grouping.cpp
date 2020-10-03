@@ -148,14 +148,14 @@ void dut_grouping()
     
 } 
 
-bool xcmp(struct dut& a, struct dut& b)
-{
-    return a.max_x < b.max_x;
-}
-bool ycmp(struct dut& a, struct dut& b)
-{
-    return a.max_y < b.max_y;
-}
+// bool xcmp(struct dut& a, struct dut& b)
+// {
+//     return a.max_x < b.max_x;
+// }
+// bool ycmp(struct dut& a, struct dut& b)
+// {
+//     return a.max_y < b.max_y;
+// }
 
 
 void generate_arr(int size, struct dut x[], struct dut y[])//x: xarr y: yarr
